@@ -8,6 +8,8 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Day 1
 var lines = await File.ReadAllLinesAsync(filePath);
 var safe = new Safe();
-var encounteredZeroes = safe.ConductInstructionSequence(lines);
+var result = safe.ConductInstructionSequence(lines);
 
-Console.WriteLine($"Conducted sequence, encountered zeroes: {encounteredZeroes}");
+Console.WriteLine($"Conducted sequence. Result: exact zeroes: {result}");
+Console.WriteLine($"\texact zeroes: {result.encounteredExactZeroes}");
+Console.WriteLine($"\tencountered zeroes in rotations: {result.encounteredZeroesInRotations}");

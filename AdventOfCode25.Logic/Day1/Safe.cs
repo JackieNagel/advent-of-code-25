@@ -4,9 +4,10 @@ public class Safe
 {
     private int CurrentDialPosition { get; set; } = 50;
 
-    public int MoveDial(string instruction)
+    public (int currentDialPosition, int rotatedAcrossZeroCount) MoveDial(string instruction)
     {
         var parsed = new Instruction(instruction);
+        var passedAcrossZeroCount = 0;
 
         for (var i = 0; i < parsed.Clicks; i++)
         {
@@ -22,22 +23,25 @@ public class Safe
                     throw new ArgumentOutOfRangeException();
             }
 
+            if (CurrentDialPosition is 0 or > 99) passedAcrossZeroCount++;
             if (CurrentDialPosition < 0) CurrentDialPosition = 99;
             if (CurrentDialPosition > 99) CurrentDialPosition = 0;
         }
 
-        return CurrentDialPosition;
+        return (CurrentDialPosition, passedAcrossZeroCount);
     }
 
-    public int ConductInstructionSequence(string[] instructions)
+    public (int encounteredExactZeroes, int encounteredZeroesInRotations) ConductInstructionSequence(string[] instructions)
     {
-        var encounteredZeroes = 0;
+        var encounteredExactZeroes = 0;
+        var encounteredZeroesInRotations = 0;
         foreach (var instruction in instructions)
         {
-            var currentDialPosition = MoveDial(instruction);
-            if (currentDialPosition == 0) encounteredZeroes++;
+            var result = MoveDial(instruction);
+            if (result.currentDialPosition == 0) encounteredExactZeroes++;
+            encounteredZeroesInRotations += result.rotatedAcrossZeroCount;
         }
 
-        return encounteredZeroes;
+        return (encounteredExactZeroes, encounteredZeroesInRotations);
     }
 }

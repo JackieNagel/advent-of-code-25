@@ -11,9 +11,9 @@ public class SafeTests
     public void Dial_Moves_As_Expected(string instruction, int expected)
     {
         var safe = new Safe();
-        var dialPos = safe.MoveDial(instruction);
+        var result = safe.MoveDial(instruction);
 
-        Assert.That(dialPos, Is.EqualTo(expected));
+        Assert.That(result.currentDialPosition, Is.EqualTo(expected));
     }
 
     [Test]
@@ -34,8 +34,8 @@ public class SafeTests
             "L82"
         };
 
-        var encounteredZeroes = safe.ConductInstructionSequence(instructions);
+        var result = safe.ConductInstructionSequence(instructions);
 
-        Assert.That(encounteredZeroes, Is.EqualTo(3));
+        Assert.That(result.encounteredExactZeroes, Is.EqualTo(3));
     }
 }
