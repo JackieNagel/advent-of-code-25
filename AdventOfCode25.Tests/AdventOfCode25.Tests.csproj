@@ -20,4 +20,8 @@
         <Using Include="NUnit.Framework"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AdventOfCode25.Logic\AdventOfCode25.Logic.csproj" />
+    </ItemGroup>
+
 </Project>
