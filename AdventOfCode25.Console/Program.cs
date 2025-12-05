@@ -2,6 +2,7 @@
 
 using AdventOfCode25.Logic.Day1;
 using AdventOfCode25.Logic.Day2;
+using AdventOfCode25.Logic.Day3;
 
 var homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfCode25.Console/Assets");
@@ -31,16 +32,22 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Sum of invalid product IDs: {aggregatedResults.Sum()}");
 
 // Day 2, part 2
-var rawProductIdInput = await File.ReadAllTextAsync(Path.Combine(filePath, "day2_puzzle_input.txt"));
-var ranges = rawProductIdInput.Split(',');
-var finder = new InvalidProductIdFinder();
-var aggregatedResults = new List<long>();
+// var rawProductIdInput = await File.ReadAllTextAsync(Path.Combine(filePath, "day2_puzzle_input.txt"));
+// var ranges = rawProductIdInput.Split(',');
+// var finder = new InvalidProductIdFinder();
+// var aggregatedResults = new List<long>();
+//
+// foreach (var range in ranges)
+// {
+//     var productIdRange = new ProductIdRange(range);
+//     var result = finder.FindInvalidProductIdsExtended(productIdRange);
+//     aggregatedResults.AddRange(result);
+// }
+//
+// Console.WriteLine($"Sum of invalid product IDs: {aggregatedResults.Sum()}");
 
-foreach (var range in ranges)
-{
-    var productIdRange = new ProductIdRange(range);
-    var result = finder.FindInvalidProductIdsExtended(productIdRange);
-    aggregatedResults.AddRange(result);
-}
+// Day 3
+var batteryBanks = await File.ReadAllLinesAsync(Path.Combine(filePath, "day3_puzzle_input.txt"));
+var sum = batteryBanks.Select(x => new BatteryBank(x).IdentifyHighestJoltageRating()).Sum();
 
-Console.WriteLine($"Sum of invalid product IDs: {aggregatedResults.Sum()}");
+Console.WriteLine($"Total joltage rating: {sum}");
