@@ -16,6 +16,21 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"\tencountered zeroes in rotations: {result.encounteredZeroesInRotations}");
 
 // Day 2
+// var rawProductIdInput = await File.ReadAllTextAsync(Path.Combine(filePath, "day2_puzzle_input.txt"));
+// var ranges = rawProductIdInput.Split(',');
+// var finder = new InvalidProductIdFinder();
+// var aggregatedResults = new List<long>();
+//
+// foreach (var range in ranges)
+// {
+//     var productIdRange = new ProductIdRange(range);
+//     var result = finder.FindInvalidProductIds(productIdRange);
+//     aggregatedResults.AddRange(result);
+// }
+//
+// Console.WriteLine($"Sum of invalid product IDs: {aggregatedResults.Sum()}");
+
+// Day 2, part 2
 var rawProductIdInput = await File.ReadAllTextAsync(Path.Combine(filePath, "day2_puzzle_input.txt"));
 var ranges = rawProductIdInput.Split(',');
 var finder = new InvalidProductIdFinder();
@@ -24,7 +39,7 @@ var aggregatedResults = new List<long>();
 foreach (var range in ranges)
 {
     var productIdRange = new ProductIdRange(range);
-    var result = finder.FindInvalidProductIds(productIdRange);
+    var result = finder.FindInvalidProductIdsExtended(productIdRange);
     aggregatedResults.AddRange(result);
 }
 
