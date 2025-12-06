@@ -90,8 +90,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Fresh ingredient count in ranges: {freshIngredientInRangesCount}");
 
 // Day 6
+// var cephalopodMath = await File.ReadAllTextAsync(Path.Combine(filePath, "day6_puzzle_input.txt"));
+// var cephalopodCalculator = new CephalopodCalculator();
+// var sum = cephalopodCalculator.CalculateSumOfProblems(cephalopodMath);
+//
+// Console.WriteLine($"Sum of problems: {sum}");
+
+// Day 6, part 2
 var cephalopodMath = await File.ReadAllTextAsync(Path.Combine(filePath, "day6_puzzle_input.txt"));
 var cephalopodCalculator = new CephalopodCalculator();
-var sum = cephalopodCalculator.CalculateSumOfProblems(cephalopodMath);
+var sum = cephalopodCalculator.CalculateSumOfProblemsRTL(cephalopodMath);
 
-Console.WriteLine($"Sum of problems: {sum}");
+Console.WriteLine($"Sum of problems, RTL: {sum}");
