@@ -60,8 +60,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Total joltage rating: {sum}");
 
 // Day 4
+// var rawGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day4_puzzle_input.txt"));
+// var forkliftPaperRollFinder = new ForkliftPaperRollFinder(rawGrid);
+// var accessiblePaperRolls = forkliftPaperRollFinder.IdentifyNumberOfAccessiblePaperRolls();
+//
+// Console.WriteLine($"Accessible Paper Rolls: {accessiblePaperRolls}");
+
+// Day 4, part 2
 var rawGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day4_puzzle_input.txt"));
 var forkliftPaperRollFinder = new ForkliftPaperRollFinder(rawGrid);
-var accessiblePaperRolls = forkliftPaperRollFinder.IdentifyNumberOfAccessiblePaperRolls();
+var accessiblePaperRolls = forkliftPaperRollFinder.IdentifyNumberOfAccessiblePaperRollsInIterations();
 
 Console.WriteLine($"Accessible Paper Rolls: {accessiblePaperRolls}");

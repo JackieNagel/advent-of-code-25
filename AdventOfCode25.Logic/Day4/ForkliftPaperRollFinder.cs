@@ -45,6 +45,40 @@ public class ForkliftPaperRollFinder
         return accessiblePaperRolls;
     }
 
+    public int IdentifyNumberOfAccessiblePaperRollsInIterations()
+    {
+        var adjacentPaperRollLimit = 4;
+        var accessiblePaperRolls = 0;
+
+        while (true)
+        {
+            var toRemove = new List<Tuple<int, int>>();
+
+            for (var l = 0; l < _lines; l++)
+            {
+                for (var c = 0; c < _lineLength; c++)
+                {
+                    if (!_grid[l, c]) continue; // skip cells that doesn't hold a paper roll
+
+                    if (GetAmoutOfAdjacentPaperRolls(l, c) < adjacentPaperRollLimit)
+                    {
+                        accessiblePaperRolls++;
+                        toRemove.Add(new Tuple<int, int>(l, c));
+                    }
+                }
+            }
+
+            if (toRemove.Count == 0) break;
+
+            foreach (var tuple in toRemove)
+            {
+                _grid[tuple.Item1, tuple.Item2] = false;
+            }
+        }
+
+        return accessiblePaperRolls;
+    }
+
     private int GetAmoutOfAdjacentPaperRolls(int line, int column)
     {
         var adjacentPaperRolls = 0;
