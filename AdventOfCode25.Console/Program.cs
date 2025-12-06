@@ -5,6 +5,7 @@ using AdventOfCode25.Logic.Day2;
 using AdventOfCode25.Logic.Day3;
 using AdventOfCode25.Logic.Day4;
 using AdventOfCode25.Logic.Day5;
+using AdventOfCode25.Logic.Day6;
 
 var homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfCode25.Console/Assets");
@@ -82,8 +83,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Fresh ingredient count: {freshIngredientCount}");
 
 // Day 5, part 2
-var database = await File.ReadAllTextAsync(Path.Combine(filePath, "day5_puzzle_input.txt"));
-var iims = new IngredientInventoryManagementSystem(database);
-var freshIngredientInRangesCount = iims.DetermineFreshIngredientCountInRanges();
+// var database = await File.ReadAllTextAsync(Path.Combine(filePath, "day5_puzzle_input.txt"));
+// var iims = new IngredientInventoryManagementSystem(database);
+// var freshIngredientInRangesCount = iims.DetermineFreshIngredientCountInRanges();
+//
+// Console.WriteLine($"Fresh ingredient count in ranges: {freshIngredientInRangesCount}");
 
-Console.WriteLine($"Fresh ingredient count in ranges: {freshIngredientInRangesCount}");
+// Day 6
+var cephalopodMath = await File.ReadAllTextAsync(Path.Combine(filePath, "day6_puzzle_input.txt"));
+var cephalopodCalculator = new CephalopodCalculator();
+var sum = cephalopodCalculator.CalculateSumOfProblems(cephalopodMath);
+
+Console.WriteLine($"Sum of problems: {sum}");
