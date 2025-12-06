@@ -75,8 +75,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Accessible Paper Rolls: {accessiblePaperRolls}");
 
 // Day 5
+// var database = await File.ReadAllTextAsync(Path.Combine(filePath, "day5_puzzle_input.txt"));
+// var iims = new IngredientInventoryManagementSystem(database);
+// var freshIngredientCount = iims.DetermineFreshIngredientCount();
+//
+// Console.WriteLine($"Fresh ingredient count: {freshIngredientCount}");
+
+// Day 5, part 2
 var database = await File.ReadAllTextAsync(Path.Combine(filePath, "day5_puzzle_input.txt"));
 var iims = new IngredientInventoryManagementSystem(database);
-var freshIngredientCount = iims.DetermineFreshIngredientCount();
+var freshIngredientInRangesCount = iims.DetermineFreshIngredientCountInRanges();
 
-Console.WriteLine($"Fresh ingredient count: {freshIngredientCount}");
+Console.WriteLine($"Fresh ingredient count in ranges: {freshIngredientInRangesCount}");
