@@ -46,8 +46,14 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 //
 // Console.WriteLine($"Sum of invalid product IDs: {aggregatedResults.Sum()}");
 
-// Day 3
+// // Day 3
+// var batteryBanks = await File.ReadAllLinesAsync(Path.Combine(filePath, "day3_puzzle_input.txt"));
+// var sum = batteryBanks.Select(x => new BatteryBank(x).IdentifyHighestJoltageRating(numberOfJoltages: 2)).Sum();
+//
+// Console.WriteLine($"Total joltage rating: {sum}");
+
+// Day 3, part 2
 var batteryBanks = await File.ReadAllLinesAsync(Path.Combine(filePath, "day3_puzzle_input.txt"));
-var sum = batteryBanks.Select(x => new BatteryBank(x).IdentifyHighestJoltageRating()).Sum();
+var sum = batteryBanks.Select(x => new BatteryBank(x).IdentifyHighestJoltageRating(numberOfJoltages: 12)).Sum();
 
 Console.WriteLine($"Total joltage rating: {sum}");

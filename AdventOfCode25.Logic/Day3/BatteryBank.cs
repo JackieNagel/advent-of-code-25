@@ -9,25 +9,32 @@ public class BatteryBank
         _batteryJoltageRatings = batteryJoltageRatings;
     }
 
-    public int IdentifyHighestJoltageRating()
+    public long IdentifyHighestJoltageRating(int numberOfJoltages)
     {
-        var split = _batteryJoltageRatings.Select(joltageRating => (int)Char.GetNumericValue(joltageRating)).ToArray();
+        var split = _batteryJoltageRatings.Select(joltage => (int)char.GetNumericValue(joltage)).ToArray();
+        var enabledJoltages = new List<int>(numberOfJoltages);
 
-        var firstJoltage = 0;
-        var firstIndex = -1;
-
-        var firstEvaluation = split[..^1];
-        for (var i = 0; i < firstEvaluation.Length; i++)
+        var previousJoltageIndex = -1;
+        for (var i = numberOfJoltages - 1; i >= 0; i--)
         {
-            if (firstEvaluation[i] > firstJoltage)
+            var lowerOffset = previousJoltageIndex + 1;
+
+            var toEvaluate = split[lowerOffset..^i];
+            var highestJoltage = -1;
+            var highestJoltageIndex = -1;
+
+            for (var n = 0; n < toEvaluate.Length; n++)
             {
-                firstJoltage = firstEvaluation[i];
-                firstIndex = i;
+                if (toEvaluate[n] <= highestJoltage) continue;
+
+                highestJoltage = toEvaluate[n];
+                highestJoltageIndex = n;
             }
+
+            previousJoltageIndex =  lowerOffset + highestJoltageIndex;
+            enabledJoltages.Add(highestJoltage);
         }
 
-        var secondJoltage = split[(firstIndex + 1)..].Max();
-
-        return int.Parse($"{firstJoltage}{secondJoltage}");
+        return long.Parse(string.Join("", enabledJoltages));;
     }
 }
