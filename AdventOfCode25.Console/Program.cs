@@ -4,6 +4,7 @@ using AdventOfCode25.Logic.Day1;
 using AdventOfCode25.Logic.Day2;
 using AdventOfCode25.Logic.Day3;
 using AdventOfCode25.Logic.Day4;
+using AdventOfCode25.Logic.Day5;
 
 var homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfCode25.Console/Assets");
@@ -67,8 +68,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Accessible Paper Rolls: {accessiblePaperRolls}");
 
 // Day 4, part 2
-var rawGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day4_puzzle_input.txt"));
-var forkliftPaperRollFinder = new ForkliftPaperRollFinder(rawGrid);
-var accessiblePaperRolls = forkliftPaperRollFinder.IdentifyNumberOfAccessiblePaperRollsInIterations();
+// var rawGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day4_puzzle_input.txt"));
+// var forkliftPaperRollFinder = new ForkliftPaperRollFinder(rawGrid);
+// var accessiblePaperRolls = forkliftPaperRollFinder.IdentifyNumberOfAccessiblePaperRollsInIterations();
+//
+// Console.WriteLine($"Accessible Paper Rolls: {accessiblePaperRolls}");
 
-Console.WriteLine($"Accessible Paper Rolls: {accessiblePaperRolls}");
+// Day 5
+var database = await File.ReadAllTextAsync(Path.Combine(filePath, "day5_puzzle_input.txt"));
+var iims = new IngredientInventoryManagementSystem(database);
+var freshIngredientCount = iims.DetermineFreshIngredientCount();
+
+Console.WriteLine($"Fresh ingredient count: {freshIngredientCount}");
