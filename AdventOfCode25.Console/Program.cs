@@ -6,6 +6,7 @@ using AdventOfCode25.Logic.Day3;
 using AdventOfCode25.Logic.Day4;
 using AdventOfCode25.Logic.Day5;
 using AdventOfCode25.Logic.Day6;
+using AdventOfCode25.Logic.Day7;
 
 var homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfCode25.Console/Assets");
@@ -97,8 +98,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Sum of problems: {sum}");
 
 // Day 6, part 2
-var cephalopodMath = await File.ReadAllTextAsync(Path.Combine(filePath, "day6_puzzle_input.txt"));
-var cephalopodCalculator = new CephalopodCalculator();
-var sum = cephalopodCalculator.CalculateSumOfProblemsRTL(cephalopodMath);
+// var cephalopodMath = await File.ReadAllTextAsync(Path.Combine(filePath, "day6_puzzle_input.txt"));
+// var cephalopodCalculator = new CephalopodCalculator();
+// var sum = cephalopodCalculator.CalculateSumOfProblemsRTL(cephalopodMath);
+//
+// Console.WriteLine($"Sum of problems, RTL: {sum}");
 
-Console.WriteLine($"Sum of problems, RTL: {sum}");
+// Day 7
+var rawTachyonManifoldGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day7_puzzle_input.txt"));
+var tachyonManifold = new TachyonManifold(rawTachyonManifoldGrid);
+var splits = tachyonManifold.DetermineTachyonManifoldSplitCount();
+
+Console.WriteLine($"Number of beam splits: {splits}");
