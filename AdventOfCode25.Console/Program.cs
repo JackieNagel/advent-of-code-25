@@ -105,8 +105,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Sum of problems, RTL: {sum}");
 
 // Day 7
-var rawTachyonManifoldGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day7_puzzle_input.txt"));
-var tachyonManifold = new TachyonManifold(rawTachyonManifoldGrid);
-var splits = tachyonManifold.DetermineTachyonManifoldSplitCount();
+// var rawTachyonManifoldGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day7_puzzle_input.txt"));
+// var tachyonManifold = new TachyonManifold();
+// var splits = tachyonManifold.DetermineTachyonManifoldSplitCount(rawTachyonManifoldGrid);
+//
+// Console.WriteLine($"Number of beam splits: {splits}");
 
-Console.WriteLine($"Number of beam splits: {splits}");
+// Day 7, part 2
+var rawTachyonManifoldGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day7_puzzle_input.txt"));
+var tachyonManifold = new TachyonManifold();
+var timelines = tachyonManifold.DetermineTachyonManifoldTimelines(rawTachyonManifoldGrid);
+
+Console.WriteLine($"Number of timelines: {timelines}");
