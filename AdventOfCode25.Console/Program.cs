@@ -8,6 +8,7 @@ using AdventOfCode25.Logic.Day5;
 using AdventOfCode25.Logic.Day6;
 using AdventOfCode25.Logic.Day7;
 using AdventOfCode25.Logic.Day8;
+using AdventOfCode25.Logic.Day9;
 
 var homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfCode25.Console/Assets");
@@ -127,8 +128,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Product of three largest circuits: {product}");
 
 // Day 8, part 2
-var rawJunctionBoxCoordinates = await File.ReadAllTextAsync(Path.Combine(filePath, "day8_puzzle_input.txt"));
-var junctionBoxConnections = new JunctionBoxConnections(rawJunctionBoxCoordinates);
-var product = junctionBoxConnections.GetXCoordinateProductOfLargestCircuit();
+// var rawJunctionBoxCoordinates = await File.ReadAllTextAsync(Path.Combine(filePath, "day8_puzzle_input.txt"));
+// var junctionBoxConnections = new JunctionBoxConnections(rawJunctionBoxCoordinates);
+// var product = junctionBoxConnections.GetXCoordinateProductOfLargestCircuit();
+//
+// Console.WriteLine($"X Coordinate product: {product}");
 
-Console.WriteLine($"X Coordinate product: {product}");
+// Day 9
+var redTileCoordiantesInput = await File.ReadAllTextAsync(Path.Combine(filePath, "day9_puzzle_input.txt"));
+var redTileAreaCalculator = new RedTileAreaCalculator(redTileCoordiantesInput);
+var largestRedTileArea = redTileAreaCalculator.CalculateLargestRedTileArea();
+
+Console.WriteLine($"Largest red tile area: {largestRedTileArea}");
