@@ -7,6 +7,7 @@ using AdventOfCode25.Logic.Day4;
 using AdventOfCode25.Logic.Day5;
 using AdventOfCode25.Logic.Day6;
 using AdventOfCode25.Logic.Day7;
+using AdventOfCode25.Logic.Day8;
 
 var homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfCode25.Console/Assets");
@@ -112,8 +113,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Number of beam splits: {splits}");
 
 // Day 7, part 2
-var rawTachyonManifoldGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day7_puzzle_input.txt"));
-var tachyonManifold = new TachyonManifold();
-var timelines = tachyonManifold.DetermineTachyonManifoldTimelines(rawTachyonManifoldGrid);
+// var rawTachyonManifoldGrid = await File.ReadAllTextAsync(Path.Combine(filePath, "day7_puzzle_input.txt"));
+// var tachyonManifold = new TachyonManifold();
+// var timelines = tachyonManifold.DetermineTachyonManifoldTimelines(rawTachyonManifoldGrid);
+//
+// Console.WriteLine($"Number of timelines: {timelines}");
 
-Console.WriteLine($"Number of timelines: {timelines}");
+// Day 8
+var rawJunctionBoxCoordinates = await File.ReadAllTextAsync(Path.Combine(filePath, "day8_puzzle_input.txt"));
+var junctionBoxConnections = new JunctionBoxConnections(rawJunctionBoxCoordinates);
+var product = junctionBoxConnections.GetProductOfLargestCircuits(3, 1000);
+
+Console.WriteLine($"Product of three largest circuits: {product}");
