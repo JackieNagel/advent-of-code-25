@@ -14,7 +14,7 @@ public class JunctionBoxConnections
         }).ToList();
     }
 
-    public long GetProductOfLargestCircuits(int amount, int targetCircuitAmount)
+    private List<(JunctionBox From, JunctionBox To, double Distance)> GetOrderedDistances()
     {
         var distances = new List<(JunctionBox From, JunctionBox To, double Distance)>();
 
@@ -28,13 +28,14 @@ public class JunctionBoxConnections
             }
         }
 
-        var orderedByDistances = distances.OrderBy(x => x.Distance).ToList();
+        return distances.OrderBy(x => x.Distance).ToList();
+    }
 
-        var circuits = new List<HashSet<JunctionBox>>();
-        foreach (var junctionBox in _junctionBoxes)
-        {
-            circuits.Add([junctionBox]);
-        }
+    public long GetProductOfLargestCircuits(int amount, int targetCircuitAmount)
+    {
+        var orderedByDistances = GetOrderedDistances();
+
+        var circuits = _junctionBoxes.Select(junctionBox => (HashSet<JunctionBox>)[junctionBox]).ToList();
 
         var iteration = 0;
         while (true)
@@ -61,6 +62,35 @@ public class JunctionBoxConnections
         return circuits.OrderByDescending(x => x.Count)
             .Take(amount)
             .Aggregate(1L, (acc, x) => acc * x.Count);
+    }
+
+    public long GetXCoordinateProductOfLargestCircuit()
+    {
+        var orderedByDistances = GetOrderedDistances();
+
+        var circuits = _junctionBoxes.Select(junctionBox => (HashSet<JunctionBox>)[junctionBox]).ToList();
+
+        var iteration = 0;
+        while (true)
+        {
+            iteration++;
+
+            var (from, to, _) = orderedByDistances[iteration - 1];
+            var circuitA = circuits.First(c => c.Contains(from));
+            var circuitB = circuits.First(c => c.Contains(to));
+
+            if (circuitA != circuitB)
+            {
+                circuitA.UnionWith(circuitB);
+                circuits.Remove(circuitB);
+                circuits = [.. circuits.OrderByDescending(c => c.Count)];
+            }
+
+            if (circuits.Count == 1)
+            {
+                return from.X * to.X;
+            }
+        }
     }
 
     private class JunctionBox(long x, long y, long z)

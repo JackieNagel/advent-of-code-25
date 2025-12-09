@@ -120,8 +120,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"Number of timelines: {timelines}");
 
 // Day 8
+// var rawJunctionBoxCoordinates = await File.ReadAllTextAsync(Path.Combine(filePath, "day8_puzzle_input.txt"));
+// var junctionBoxConnections = new JunctionBoxConnections(rawJunctionBoxCoordinates);
+// var product = junctionBoxConnections.GetProductOfLargestCircuits(3, 1000);
+//
+// Console.WriteLine($"Product of three largest circuits: {product}");
+
+// Day 8, part 2
 var rawJunctionBoxCoordinates = await File.ReadAllTextAsync(Path.Combine(filePath, "day8_puzzle_input.txt"));
 var junctionBoxConnections = new JunctionBoxConnections(rawJunctionBoxCoordinates);
-var product = junctionBoxConnections.GetProductOfLargestCircuits(3, 1000);
+var product = junctionBoxConnections.GetXCoordinateProductOfLargestCircuit();
 
-Console.WriteLine($"Product of three largest circuits: {product}");
+Console.WriteLine($"X Coordinate product: {product}");
