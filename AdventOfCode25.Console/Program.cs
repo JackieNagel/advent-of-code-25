@@ -135,8 +135,15 @@ var filePath = Path.Combine(homeDirectory, "projects/advent-of-code-25/AdventOfC
 // Console.WriteLine($"X Coordinate product: {product}");
 
 // Day 9
-var redTileCoordiantesInput = await File.ReadAllTextAsync(Path.Combine(filePath, "day9_puzzle_input.txt"));
-var redTileAreaCalculator = new RedTileAreaCalculator(redTileCoordiantesInput);
-var largestRedTileArea = redTileAreaCalculator.CalculateLargestRedTileArea();
+// var redTileCoordinatesInput = await File.ReadAllTextAsync(Path.Combine(filePath, "day9_puzzle_input.txt"));
+// var redTileAreaCalculator = new RedTileAreaCalculator(redTileCoordinatesInput);
+// var largestRedTileArea = redTileAreaCalculator.CalculateLargestRedTileArea();
+//
+// Console.WriteLine($"Largest red tile area: {largestRedTileArea}");
 
-Console.WriteLine($"Largest red tile area: {largestRedTileArea}");
+// Day 9, part 2
+var redTileCoordinatesInput = await File.ReadAllTextAsync(Path.Combine(filePath, "day9_puzzle_input.txt"));
+var redTileAreaCalculator = new RedTileAreaCalculator(redTileCoordinatesInput);
+var largestRedTileArea = redTileAreaCalculator.CalculateLargestRedAndGreenTileArea();
+
+Console.WriteLine($"Largest red/green tile area: {largestRedTileArea}");
